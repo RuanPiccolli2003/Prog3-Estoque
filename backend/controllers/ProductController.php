@@ -43,22 +43,22 @@ class ProductController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-
+    // MVC no ProductController
     public function actionCreate()
     {
-        $model = new Product();
+        $model = new Product(); // Controller instancia o Model
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                Yii::$app->session->setFlash('success', 'Produto criado com sucesso!');
-                return $this->redirect(['view', 'id' => $model->id]);
+                Yii::$app->session->setFlash('success', 'Produto criado com sucesso!'); // Mensagem de sucesso
+                return $this->redirect(['view', 'id' => $model->id]); // Redireciona para a pag de visualização do produto criado
             }
         } else {
             $model->loadDefaultValues();
         }
-
+        // Controller envia o Model para a View
         return $this->render('create', [
-            'model' => $model,
+            'model' => $model, // Controller envia o Model para a View
         ]);
     }
 

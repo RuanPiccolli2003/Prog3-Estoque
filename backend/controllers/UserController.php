@@ -73,7 +73,7 @@ class UserController extends Controller
                     $model->setPassword($password);
                     $model->generateAuthKey();
                     if($model->save()){
-                        Yii::$app->session->setFlash('success', 'Utilizador criado com sucesso.');
+                        Yii::$app->session->setFlash('success', 'Usuário criado com sucesso.');
                         return $this->redirect(['view', 'id' => $model->id]);
                     }
                 } else {
@@ -104,7 +104,7 @@ class UserController extends Controller
                 $model->setPassword($password);
             }
             if($model->save()){
-                Yii::$app->session->setFlash('success', 'Utilizador atualizado com sucesso.');
+                Yii::$app->session->setFlash('success', 'Usuário atualizado com sucesso.');
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
@@ -120,7 +120,7 @@ class UserController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-        Yii::$app->session->setFlash('success', 'Utilizador excluído com sucesso.');
+        Yii::$app->session->setFlash('success', 'Usuário excluído com sucesso.');
         return $this->redirect(['index']);
     }
 

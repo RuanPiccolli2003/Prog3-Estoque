@@ -9,24 +9,30 @@ use yii\bootstrap5\Html;
 
 $this->title = 'Login';
 ?>
-<div class="site-login">
-    <div class="mt-5 offset-lg-3 col-lg-6">
-        <h1><?= Html::encode($this->title) ?></h1>
+<div class="site-login mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3><?= Html::encode($this->title) ?></h3>
+                    <p>Por favor, preencha os campos para entrar</p>
+                </div>
+                <div class="card-body">
+                    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-        <p>Please fill out the following fields to login:</p>
+                        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-        <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+                        <?= $form->field($model, 'password')->passwordInput() ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                        <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
-            <?= $form->field($model, 'password')->passwordInput() ?>
+                        <div class="form-group">
+                            <?= Html::submitButton('Login', ['class' => 'btn btn-primary w-100', 'name' => 'login-button']) ?>
+                        </div>
 
-            <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-            <div class="form-group">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block', 'name' => 'login-button']) ?>
+                    <?php ActiveForm::end(); ?>
+                </div>
             </div>
-
-        <?php ActiveForm::end(); ?>
+        </div>
     </div>
 </div>

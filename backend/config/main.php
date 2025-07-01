@@ -12,6 +12,11 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    
+    'name' => 'Sistema de Estoque',
+    'language' => 'pt-BR',
+    'sourceLanguage' => 'en-US',
+
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -22,14 +27,13 @@ return [
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'session' => [
-            // this is the name of the session cookie used for login on the backend
             'name' => 'advanced-backend',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => \yii\log\FileTarget::class,
+                    'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
             ],
@@ -37,14 +41,20 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        // COMPONENTE DE FORMATAÇÃO ADICIONADO
+        'formatter' => [
+            'locale' => 'pt-BR',
+            'defaultTimeZone' => 'America/Sao_Paulo',
+            'dateFormat' => 'dd/MM/yyyy',
+            'datetimeFormat' => 'dd/MM/yyyy HH:mm:ss',
+            'currencyCode' => 'BRL',
+        ],
     ],
     'params' => $params,
 ];
